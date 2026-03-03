@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No Recoil"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for recoil pattern
+define(address,"RE9.exe"+3C7F90)
+define(bytes,F3 0F 11 81 24 01 00 00 F3 0F 11 89 28 01 00 00)
+
+alloc(memory_NoRecoil,$1000, "RE9.exe"+3C7F90)
+
+label(return_NoRecoil)
+
+memory_NoRecoil:
+  // zero out recoil values
+  xorps xmm0,xmm0
+  movss [rcx+00000124],xmm0
+  movss [rcx+00000128],xmm0
+  jmp return_NoRecoil
+
+"RE9.exe"+3C7F90:
+  jmp memory_NoRecoil
+  nop 8
+return_NoRecoil:
+
+[DISABLE]
+"RE9.exe"+3C7F90:
+  db F3 0F 11 81 24 01 00 00 F3 0F 11 89 28 01 00 00
+
+dealloc(memory_NoRecoil)</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Super Accuracy (bullet spread = 0)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for spread calculation
+define(address,"RE9.exe"+3D1A20)
+define(bytes,48 8B 41 28 0F 28 C8 0F 59 0D)
+
+alloc(memory_SuperAccuracy,$1000, "RE9.exe"+3D1A20)
+
+label(return_SuperAccuracy)
+
+memory_SuperAccuracy:
+  // set spread to zero
+  xorps xmm1,xmm1
+  jmp return_SuperAccuracy
+
+"RE9.exe"+3D1A20:
+  jmp memory_SuperAccuracy
+  nop 5
+return_SuperAccuracy:
+
+[DISABLE]
+"RE9.exe"+3D1A20:
+  db 48 8B 41 28 0F 28 C8 0F 59 0D
+
+dealloc(memory_SuperAccuracy)</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

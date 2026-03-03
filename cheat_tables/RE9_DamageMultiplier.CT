@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Damage Multiplier"</Description>
+      <VariableType>Float</VariableType>
+      <ShowAsSigned>1</ShowAsSigned>
+      <Address>RE9.exe</Address>
+      <Offsets>
+        <Offset>0x48A730</Offset>
+        <Offset>0x28</Offset>
+        <Offset>0xC0</Offset>
+        <Offset>0x84</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>49</Key>
+          </Keys>
+          <Value>2.0</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>50</Key>
+          </Keys>
+          <Value>5.0</Value>
+          <ID>1</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>51</Key>
+          </Keys>
+          <Value>10.0</Value>
+          <ID>2</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Critical Hit Chance %"</Description>
+      <VariableType>Float</VariableType>
+      <Address>RE9.exe</Address>
+      <Offsets>
+        <Offset>0x48A730</Offset>
+        <Offset>0x28</Offset>
+        <Offset>0xC0</Offset>
+        <Offset>0x88</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

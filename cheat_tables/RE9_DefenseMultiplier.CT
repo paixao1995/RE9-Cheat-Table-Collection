@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Defense Multiplier (damage taken)"</Description>
+      <VariableType>Float</VariableType>
+      <ShowAsSigned>1</ShowAsSigned>
+      <Address>RE9.exe</Address>
+      <Offsets>
+        <Offset>0x48A730</Offset>
+        <Offset>0x28</Offset>
+        <Offset>0xC0</Offset>
+        <Offset>0x80</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>49</Key>
+          </Keys>
+          <Value>0.5</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>50</Key>
+          </Keys>
+          <Value>0.25</Value>
+          <ID>1</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>51</Key>
+          </Keys>
+          <Value>0.1</Value>
+          <ID>2</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

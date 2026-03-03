@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Infinite Ammo"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for ammo decrement
+define(address,"RE9.exe"+3F2A10)
+define(bytes,FF 88 84 01 00 00 48 8B 5C 24 30)
+
+alloc(memory_InfiniteAmmo,$1000, "RE9.exe"+3F2A10)
+
+label(return_InfiniteAmmo)
+label(exit_InfiniteAmmo)
+
+memory_InfiniteAmmo:
+  // skip decrement
+  jmp return_InfiniteAmmo
+
+"RE9.exe"+3F2A10:
+  jmp memory_InfiniteAmmo
+  nop
+return_InfiniteAmmo:
+
+[DISABLE]
+"RE9.exe"+3F2A10:
+  db FF 88 84 01 00 00 48 8B 5C 24 30
+
+dealloc(memory_InfiniteAmmo)</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No Reload"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for reload routine
+define(address,"RE9.exe"+41E550)
+define(bytes,48 89 5C 24 08 57 48 83 EC 20 48 8B D9 E8 ?? ?? ?? ??)
+
+alloc(memory_NoReload,$1000, "RE9.exe"+41E550)
+
+label(return_NoReload)
+
+memory_NoReload:
+  // skip reload animation
+  xor eax,eax
+  ret
+
+"RE9.exe"+41E550:
+  jmp memory_NoReload
+  nop 5
+return_NoReload:
+
+[DISABLE]
+"RE9.exe"+41E550:
+  db 48 89 5C 24 08 57 48 83 EC 20
+
+dealloc(memory_NoReload)</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Infinite Grenades"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for grenade count
+define(address,"RE9.exe"+459CD0)
+define(bytes,48 8B 41 20 48 85 C0 74 0A 83 B8 ?? ?? ?? ?? 00 75 02)
+
+alloc(memory_InfiniteGrenades,$1000, "RE9.exe"+459CD0)
+
+label(return_InfiniteGrenades)
+
+memory_InfiniteGrenades:
+  // always have grenades
+  cmp [rax+00000214],#0
+  jne +02
+  mov [rax+00000214],#5
+  jmp return_InfiniteGrenades
+
+"RE9.exe"+459CD0:
+  jmp memory_InfiniteGrenades
+  nop 5
+return_InfiniteGrenades:
+
+[DISABLE]
+"RE9.exe"+459CD0:
+  db 48 8B 41 20 48 85 C0 74 0A 83 B8
+
+dealloc(memory_InfiniteGrenades)</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

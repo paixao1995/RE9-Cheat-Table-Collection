@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"God Mode (Invincibility)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for health function
+define(address,"RE9.exe"+4A7B30)
+define(bytes,48 8B 81 B0 00 00 00 48 85 C0 74 05 48 8B 48 20)
+
+alloc(memory_GodMode,$1000, "RE9.exe"+4A7B30)
+
+label(return_GodMode)
+label(exit_GodMode)
+
+memory_GodMode:
+  mov [rcx+00000210],#999999
+  jmp return_GodMode
+
+"RE9.exe"+4A7B30:
+  jmp memory_GodMode
+  nop 2
+return_GodMode:
+
+registerSymbol(enable_GodMode)
+
+[DISABLE]
+"RE9.exe"+4A7B30:
+  db 48 8B 81 B0 00 00 00 48 85 C0 74 05 48 8B 48 20
+
+dealloc(memory_GodMode)
+unregisterSymbol(enable_GodMode)</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

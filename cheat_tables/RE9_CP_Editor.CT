@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"CP Editor (Challenge Points)"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <ShowAsSigned>0</ShowAsSigned>
+      <Address>RE9.exe</Address>
+      <Offsets>
+        <Offset>0x4A8F30</Offset>
+        <Offset>0x20</Offset>
+        <Offset>0x48</Offset>
+        <Offset>0x74</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>49</Key>
+          </Keys>
+          <Value>999999</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"CP Multiplier (when earning)"</Description>
+      <VariableType>Float</VariableType>
+      <Address>RE9.exe</Address>
+      <Offsets>
+        <Offset>0x4B2A40</Offset>
+        <Offset>0x18</Offset>
+        <Offset>0x5C</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Increase Value</Action>
+          <Keys>
+            <Key>50</Key>
+          </Keys>
+          <Value>10</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>

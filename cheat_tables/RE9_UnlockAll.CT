@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="36">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Unlock All Bonus Content"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for unlock flag check
+define(address,"RE9.exe"+47D940)
+define(bytes,80 B9 ?? ?? ?? ?? 00 74 ?? 48 8B 81 ?? ?? ?? ?? 48 85 C0)
+
+alloc(memory_UnlockAll,$1000, "RE9.exe"+47D940)
+
+label(return_UnlockAll)
+
+memory_UnlockAll:
+  // force unlock condition
+  mov byte ptr [rcx+000003F0],01
+  jmp return_UnlockAll
+
+"RE9.exe"+47D940:
+  jmp memory_UnlockAll
+  nop 5
+return_UnlockAll:
+
+[DISABLE]
+"RE9.exe"+47D940:
+  db 80 B9 F0 03 00 00 00 74 2D 48 8B 81
+
+dealloc(memory_UnlockAll)</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Unlock All Weapons"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler</VariableType>
+      <AssemblerScript>[ENABLE]
+// aob scan for weapon unlock
+define(address,"RE9.exe"+48E210)
+define(bytes,48 8B 41 30 48 85 C0 74 0E 38 98 ?? ?? ?? ?? 74 05)
+
+alloc(memory_UnlockWeapons,$1000, "RE9.exe"+48E210)
+
+label(return_UnlockWeapons)
+
+memory_UnlockWeapons:
+  // set owned flag
+  mov byte ptr [rax+00000348],01
+  jmp return_UnlockWeapons
+
+"RE9.exe"+48E210:
+  jmp memory_UnlockWeapons
+  nop 5
+return_UnlockWeapons:
+
+[DISABLE]
+"RE9.exe"+48E210:
+  db 48 8B 41 30 48 85 C0 74 0E 38 98
+
+dealloc(memory_UnlockWeapons)</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>
